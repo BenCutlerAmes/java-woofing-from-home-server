@@ -31,16 +31,15 @@ public class CustomerController {
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
-    @PatchMapping(value = "/customers/{id}")
+    @PutMapping(value = "/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer){
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
-//    @DeleteMapping(value = "/customers/{id}")
-//    public ResponseEntity<Customer> deleteCustomer(@RequestBody Customer customer){
-//        customerRepository.save(customer);
-//        return new ResponseEntity<>(customer, HttpStatus.CREATED);
-
-
+    @DeleteMapping(value = "/customers/{id}")
+    public ResponseEntity<Customer> deleteCustomer(@RequestBody Customer customer){
+        customerRepository.save(customer);
+        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+        
 }
