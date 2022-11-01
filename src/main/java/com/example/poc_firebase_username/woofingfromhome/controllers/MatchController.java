@@ -9,39 +9,39 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-@RestController
-public class MatchController {
-
-
-    @Autowired
-    MatchRepository matchRepository;
-
-    @GetMapping(value = "/match")
-    public ResponseEntity<List<Match>> getAllMatches() {
-        return new ResponseEntity<>(matchRepository.findAll(), HttpStatus.OK);
-    }
-
-    @GetMapping(value = "/dogs/{id}")
-    public ResponseEntity getMatches(@PathVariable Long id) {
-        return new ResponseEntity<>(matchRepository.findById(id), HttpStatus.OK);
-    }
-
-    @PostMapping(value = "/dogs")
-    public ResponseEntity<Match> postMatch(@RequestBody Match match) {
-        matchRepository.save(match);
-        return new ResponseEntity<>(match, HttpStatus.CREATED);
-    }
-
-    @PutMapping(value = "/dogs/{id}")
-    public ResponseEntity<Match> updateMatch(@PathVariable Long id, @RequestBody Match match){
-        matchRepository.save(match);
-        return new ResponseEntity<>(match, HttpStatus.OK);
-    }
-
-    @DeleteMapping(value = "/dogs/{id}")
-    public ResponseEntity deleteMatch(@PathVariable Long id) {
-        matchRepository.deleteById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-}
+//
+//@RestController
+//public class MatchController {
+//
+//
+//    @Autowired
+//    MatchRepository matchRepository;
+//
+//    @GetMapping(value = "/match")
+//    public ResponseEntity<List<Match>> getAllMatches() {
+//        return new ResponseEntity<>(matchRepository.findAll(), HttpStatus.OK);
+//    }
+//
+//    @GetMapping(value = "/dogs/{id}")
+//    public ResponseEntity getMatches(@PathVariable Long id) {
+//        return new ResponseEntity<>(matchRepository.findById(id), HttpStatus.OK);
+//    }
+//
+//    @PostMapping(value = "/dogs")
+//    public ResponseEntity<Match> postMatch(@RequestBody Match match) {
+//        matchRepository.save(match);
+//        return new ResponseEntity<>(match, HttpStatus.CREATED);
+//    }
+//
+//    @PutMapping(value = "/dogs/{id}")
+//    public ResponseEntity<Match> updateMatch(@PathVariable Long id, @RequestBody Match match){
+//        matchRepository.save(match);
+//        return new ResponseEntity<>(match, HttpStatus.OK);
+//    }
+//
+//    @DeleteMapping(value = "/dogs/{id}")
+//    public ResponseEntity deleteMatch(@PathVariable Long id) {
+//        matchRepository.deleteById(id);
+//        return new ResponseEntity<>(HttpStatus.OK);
+//    }
+//}

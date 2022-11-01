@@ -18,7 +18,7 @@ public class DogController {
 
 
     @GetMapping(value = "/dogs")
-    public ResponseEntity<List<Dog>> getAllCustomers() {
+    public ResponseEntity<List<Dog>> getAllDogs() {
         return new ResponseEntity<>(dogRepository.findAll(), HttpStatus.OK);
     }
 

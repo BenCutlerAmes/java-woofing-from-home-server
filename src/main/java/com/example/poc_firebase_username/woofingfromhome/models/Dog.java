@@ -1,5 +1,6 @@
 package com.example.poc_firebase_username.woofingfromhome.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -43,12 +44,12 @@ public class Dog {
     @Column(name = "ok_with_dogs")
     private Boolean okWithDogs;
 
-    @JsonIgnoreProperties({"dogs"})
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "firebase_id", nullable = false)
-    private String customerId;
+    private Customer customer;
 
-    public Dog(String name, String dob, String breed, Integer size, Integer exerciseRequired, Boolean hypoallergenic, Boolean canBeLeft, Boolean okWithKids, Boolean okWithCats, Boolean okWithDogs, String customerId) {
+    public Dog(String name, String dob, String breed, Integer size, Integer exerciseRequired, Boolean hypoallergenic, Boolean canBeLeft, Boolean okWithKids, Boolean okWithCats, Boolean okWithDogs, Customer customer) {
         this.name = name;
         this.dob = dob;
         this.breed = breed;
@@ -59,7 +60,7 @@ public class Dog {
         this.okWithKids = okWithKids;
         this.okWithCats = okWithCats;
         this.okWithDogs = okWithDogs;
-        this.customerId = customerId;
+        this.customer = customer;
     }
 
     public Dog() {}
@@ -152,11 +153,11 @@ public class Dog {
         this.okWithDogs = okWithDogs;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

@@ -28,10 +28,10 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader() {}
 
     public void run(ApplicationArguments args) {
-        Customer customer = new Customer("jhdsjfkhdjshfjksdhf", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6, "33.33", "33.33");
+        Customer customer = new Customer("Conrad", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6, "33.33", "33.33");
         customerRepository.save(customer);
 
-        Customer customer2 = new Customer("lololololol", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6, "33.33", "33.33");
+        Customer customer2 = new Customer("Callum", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6, "33.33", "33.33");
         customerRepository.save(customer2);
 
 //        Customer customer2 = new Customer("changed1234", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
@@ -49,7 +49,7 @@ public class DataLoader implements ApplicationRunner {
 //        Customer customer6 = new Customer("newPerson6",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
 //        customerRepository.save(customer6);
 //
-        Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,false,"jhdsjfkhdjshfjksdhf");
+        Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,false,customer);
         dogRepository.save(dog);
 //
         Match match = new Match(customer, customer2, 1234, 98.3);

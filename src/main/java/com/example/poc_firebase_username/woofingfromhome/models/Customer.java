@@ -106,6 +106,7 @@ public class Customer {
         this.dogSizeOffer = dogSizeOffer;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.dogs = new ArrayList<>();
     }
 
     public Customer(){}
@@ -302,5 +303,11 @@ public class Customer {
         this.latitude = latitude;
     }
 
+    public List<Dog> getDogs() {
+        return dogs;
+    }
 
+    public void setDogs(List<Dog> dogs) {
+        this.dogs = dogs;
+    }
 }
