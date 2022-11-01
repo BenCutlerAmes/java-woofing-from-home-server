@@ -30,9 +30,9 @@ public class CustomerController {
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
-
-    @PatchMapping(value = "/customers/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer) {
+    
+    @PutMapping(value = "/customers/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer){
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
