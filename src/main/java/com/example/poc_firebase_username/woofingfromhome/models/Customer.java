@@ -1,5 +1,7 @@
 package com.example.poc_firebase_username.woofingfromhome.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +13,6 @@ public class Customer {
 
     @Id
     private String firebase_id;
-
-    @Column(name = "first_name")
-    private String firstName;
-
-    @Column(name = "last_name")
-    private String lastName;
-
-    @Column(name = "email_address")
-    private String emailAddress;
-
-    @Column(name = "post_code")
-    private String postCode;
 
     @Column(name = "available_monday")
     private Boolean availableMonday;
@@ -75,7 +65,14 @@ public class Customer {
     @Column(name = "dog_size_offer")
     private Integer dogSizeOffer;
 
+    @Column(name = "longitude")
+    private String longitude;
+
+    @Column(name = "latitude")
+    private String latitude;
+
     @OneToMany (mappedBy = "customer" , fetch = FetchType.LAZY)
+    @JsonIgnoreProperties({"customer"})
     private List<Dog> dogs;
 
     @OneToMany(mappedBy = "customer1", fetch = FetchType.LAZY)
@@ -84,12 +81,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer2", fetch = FetchType.LAZY)
     private List<Match> matches2;
 
-    public Customer(String firebase_id, String firstName, String lastName, String emailAddress, String postCode, Boolean availableMonday, Boolean availableTuesday, Boolean availableWednesday, Boolean availableThursday, Boolean availableFriday, Boolean availableSaturday, Boolean availableSunday, Boolean requireMonday, Boolean requireTuesday, Boolean requireWednesday, Boolean requireThursday, Boolean requireFriday, Boolean requireSaturday, Boolean requireSunday, Boolean hasKids, Boolean hasOtherDogs, Boolean hasCats, Integer exerciseOffered, Boolean dogLeftAlone, Boolean hasAllergies, Integer dogSizeOffer) {
+    public Customer(String firebase_id, Boolean availableMonday, Boolean availableTuesday, Boolean availableWednesday, Boolean availableThursday, Boolean availableFriday, Boolean availableSaturday, Boolean availableSunday, Boolean requireMonday, Boolean requireTuesday, Boolean requireWednesday, Boolean requireThursday, Boolean requireFriday, Boolean requireSaturday, Boolean requireSunday, Boolean hasKids, Boolean hasOtherDogs, Boolean hasCats, Integer exerciseOffered, Boolean dogLeftAlone, Boolean hasAllergies, Integer dogSizeOffer, String longitude, String latitude) {
         this.firebase_id = firebase_id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
-        this.postCode = postCode;
         this.availableMonday = availableMonday;
         this.availableTuesday = availableTuesday;
         this.availableWednesday = availableWednesday;
@@ -111,6 +104,8 @@ public class Customer {
         this.dogLeftAlone = dogLeftAlone;
         this.hasAllergies = hasAllergies;
         this.dogSizeOffer = dogSizeOffer;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.dogs = new ArrayList<>();
     }
 
@@ -122,38 +117,6 @@ public class Customer {
 
     public void setFirebase_id(String firebase_id) {
         this.firebase_id = firebase_id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
     }
 
     public Boolean getAvailableMonday() {
