@@ -294,4 +294,40 @@ public class Customer {
     public void setDogs(ArrayList<Dog> dogs) {
         this.dogs = dogs;
     }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setDogs(List<Dog> dogs) {
+        this.dogs = dogs;
+    }
+
+    public List<Match> getMatches1() {
+        return matches1;
+    }
+
+    public void setMatches1(List<Match> matches1) {
+        this.matches1 = matches1;
+    }
+
+    public List<Match> getMatches2() {
+        return matches2;
+    }
+
+    public void setMatches2(List<Match> matches2) {
+        this.matches2 = matches2;
+    }
 }
