@@ -46,7 +46,7 @@ public class Dog {
 
     @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "firebase_id", nullable = false)
+    @JoinColumn(name = "firebaseId", nullable = false)
     private Customer customer;
 
     public Dog(String name, String dob, String breed, Integer size, Integer exerciseRequired, Boolean hypoallergenic, Boolean canBeLeft, Boolean okWithKids, Boolean okWithCats, Boolean okWithDogs, Customer customer) {

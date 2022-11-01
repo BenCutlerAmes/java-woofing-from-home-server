@@ -111,11 +111,11 @@ public class Customer {
 
     public Customer(){}
 
-    public String getFirebase_id() {
+    public String getFirebaseId() {
         return firebaseId;
     }
 
-    public void setFirebase_id(String firebase_id) {
+    public void setFirebaseId(String firebaseId) {
         this.firebaseId = firebaseId;
     }
 
