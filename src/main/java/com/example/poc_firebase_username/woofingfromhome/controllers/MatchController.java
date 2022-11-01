@@ -9,10 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//
-//@RestController
-//public class MatchController {
-//
+
+@RestController
+public class MatchController {
+
 //
 //    @Autowired
 //    MatchRepository matchRepository;
@@ -44,4 +44,4 @@ import java.util.List;
 //        matchRepository.deleteById(id);
 //        return new ResponseEntity<>(HttpStatus.OK);
 //    }
-//}
+}

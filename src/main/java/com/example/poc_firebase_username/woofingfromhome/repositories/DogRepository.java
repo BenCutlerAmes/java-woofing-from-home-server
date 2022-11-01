@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface DogRepository extends JpaRepository<Dog, Long> {
 
-    List<Dog> findByCustomerFirebaseId(String firebase_Id);
+    List<Dog> findByCustomerFirebaseId(String firebaseId);
 
 
 }
