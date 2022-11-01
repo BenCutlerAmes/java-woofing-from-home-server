@@ -28,38 +28,38 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader() {}
 
     public void run(ApplicationArguments args) {
-        Customer customer = new Customer("12234cdww", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
-        customerRepository.save(customer);
-
-        Customer customer2 = new Customer("changed1234", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
-        customerRepository.save(customer2);
-
-        Customer customer3 = new Customer("newPerson3", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
-        customerRepository.save(customer3);
-
-        Customer customer4 = new Customer("newPerson4", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
-        customerRepository.save(customer4);
-
-        Customer customer5 = new Customer("newPerson5",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
-        customerRepository.save(customer5);
-
-        Customer customer6 = new Customer("newPerson6",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
-        customerRepository.save(customer6);
-
-        Dog dog = new Dog("Scratchie","7-12-2021","Cavapoo",3,3,true,true,true,true,false,customer);
-        dogRepository.save(dog);
-
-        Match match = new Match(customer, customer2, 1234, 98.3);
-        matchRepository.save(match);
-
-        Match match2 = new Match(customer2, customer, 8454, 100);
-        matchRepository.save(match2);
-
-        Match match3 = new Match(customer3, customer4, 9342, 13);
-        matchRepository.save(match3);
-
-        Match match4 = new Match(customer5, customer6, 9641, 35);
-        matchRepository.save(match4);
+//        Customer customer = new Customer("12234cdww", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+//        customerRepository.save(customer);
+//
+//        Customer customer2 = new Customer("changed1234", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+//        customerRepository.save(customer2);
+//
+//        Customer customer3 = new Customer("newPerson3", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+//        customerRepository.save(customer3);
+//
+//        Customer customer4 = new Customer("newPerson4", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+//        customerRepository.save(customer4);
+//
+//        Customer customer5 = new Customer("newPerson5",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+//        customerRepository.save(customer5);
+//
+//        Customer customer6 = new Customer("newPerson6",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+//        customerRepository.save(customer6);
+//
+//        Dog dog = new Dog("Scratchie","7-12-2021","Cavapoo",3,3,true,true,true,true,false,customer);
+//        dogRepository.save(dog);
+//
+//        Match match = new Match(customer, customer2, 1234, 98.3);
+//        matchRepository.save(match);
+//
+//        Match match2 = new Match(customer2, customer, 8454, 100);
+//        matchRepository.save(match2);
+//
+//        Match match3 = new Match(customer3, customer4, 9342, 13);
+//        matchRepository.save(match3);
+//
+//        Match match4 = new Match(customer5, customer6, 9641, 35);
+//        matchRepository.save(match4);
 
 
     }
