@@ -30,7 +30,7 @@ public class CustomerController {
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
-    
+
     @PutMapping(value = "/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer){
         customerRepository.save(customer);
@@ -38,8 +38,8 @@ public class CustomerController {
     }
 
     @DeleteMapping(value = "/customers/{id}")
-    public ResponseEntity<Customer> deleteCustomer(@RequestBody Customer customer) {
-        customerRepository.save(customer);
-        return new ResponseEntity<>(customer, HttpStatus.CREATED);
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable String id) {
+        customerRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
