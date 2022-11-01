@@ -34,6 +34,10 @@ public class DataLoader implements ApplicationRunner {
         Customer customer2 = new Customer("Callum", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6, "33.33", "33.33");
         customerRepository.save(customer2);
 
+
+        Customer customer3 = new Customer("Katie", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6, "33.33", "33.33");
+        customerRepository.save(customer3);
+
 //        Customer customer2 = new Customer("changed1234", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
 //        customerRepository.save(customer2);
 //
@@ -54,6 +58,12 @@ public class DataLoader implements ApplicationRunner {
 //
         Match match = new Match(customer, customer2, 1234, 98.3);
         matchRepository.save(match);
+
+        Match match1 = new Match(customer, customer3, 99, 99);
+        matchRepository.save(match1);
+
+        Match match21 = new Match(customer2, customer, 99, 99);
+        matchRepository.save(match21);
 //
 //        Match match2 = new Match(customer2, customer, 8454, 100);
 //        matchRepository.save(match2);

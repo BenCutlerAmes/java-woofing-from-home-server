@@ -10,5 +10,5 @@ import java.util.List;
 @Repository
 public interface MatchRepository extends JpaRepository<Match, Long> {
 
-//    List<Match> findByMatcherFirebaseId(String firebaseId);
+    List<Match> findByCustomer1FirebaseId(String firebaseId);
 }
