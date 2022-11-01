@@ -18,7 +18,10 @@ public class DogController {
 
 
     @GetMapping(value = "/dogs")
-    public ResponseEntity<List<Dog>> getAllDogs() {
+    public ResponseEntity<List<Dog>> getAllDogs(@RequestParam(required = false, name = "firebaseId") String firebaseId) {
+        if (firebaseId != null) {
+            return new ResponseEntity<>(dogRepository.findByCustomerFirebaseId(firebaseId), HttpStatus.OK);
+        }
         return new ResponseEntity<>(dogRepository.findAll(), HttpStatus.OK);
     }
 
@@ -34,7 +37,7 @@ public class DogController {
     }
 
     @PutMapping(value = "/dogs/{id}")
-    public ResponseEntity<Dog> updateDog(@PathVariable Long id, @RequestBody Dog dog){
+    public ResponseEntity<Dog> updateDog(@PathVariable Long id, @RequestBody Dog dog) {
         dogRepository.save(dog);
         return new ResponseEntity<>(dog, HttpStatus.OK);
     }

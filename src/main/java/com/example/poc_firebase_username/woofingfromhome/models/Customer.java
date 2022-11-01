@@ -12,7 +12,7 @@ import java.util.List;
 public class Customer {
 
     @Id
-    private String firebase_id;
+    private String firebaseId;
 
     @Column(name = "available_monday")
     private Boolean availableMonday;
@@ -81,8 +81,8 @@ public class Customer {
     @OneToMany(mappedBy = "customer2", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Match> matches2;
 
-    public Customer(String firebase_id, Boolean availableMonday, Boolean availableTuesday, Boolean availableWednesday, Boolean availableThursday, Boolean availableFriday, Boolean availableSaturday, Boolean availableSunday, Boolean requireMonday, Boolean requireTuesday, Boolean requireWednesday, Boolean requireThursday, Boolean requireFriday, Boolean requireSaturday, Boolean requireSunday, Boolean hasKids, Boolean hasOtherDogs, Boolean hasCats, Integer exerciseOffered, Boolean dogLeftAlone, Boolean hasAllergies, Integer dogSizeOffer, String longitude, String latitude) {
-        this.firebase_id = firebase_id;
+    public Customer(String firebaseId, Boolean availableMonday, Boolean availableTuesday, Boolean availableWednesday, Boolean availableThursday, Boolean availableFriday, Boolean availableSaturday, Boolean availableSunday, Boolean requireMonday, Boolean requireTuesday, Boolean requireWednesday, Boolean requireThursday, Boolean requireFriday, Boolean requireSaturday, Boolean requireSunday, Boolean hasKids, Boolean hasOtherDogs, Boolean hasCats, Integer exerciseOffered, Boolean dogLeftAlone, Boolean hasAllergies, Integer dogSizeOffer, String longitude, String latitude) {
+        this.firebaseId = firebaseId;
         this.availableMonday = availableMonday;
         this.availableTuesday = availableTuesday;
         this.availableWednesday = availableWednesday;
@@ -112,11 +112,11 @@ public class Customer {
     public Customer(){}
 
     public String getFirebase_id() {
-        return firebase_id;
+        return firebaseId;
     }
 
     public void setFirebase_id(String firebase_id) {
-        this.firebase_id = firebase_id;
+        this.firebaseId = firebaseId;
     }
 
     public Boolean getAvailableMonday() {
