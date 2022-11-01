@@ -49,7 +49,7 @@ public class DataLoader implements ApplicationRunner {
 //        Customer customer6 = new Customer("newPerson6",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
 //        customerRepository.save(customer6);
 //
-        Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,false,customer);
+        Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,false,"jhdsjfkhdjshfjksdhf");
         dogRepository.save(dog);
 //
         Match match = new Match(customer, customer2, 1234, 98.3);

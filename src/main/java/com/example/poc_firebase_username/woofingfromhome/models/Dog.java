@@ -46,9 +46,9 @@ public class Dog {
     @JsonIgnoreProperties({"dogs"})
     @ManyToOne
     @JoinColumn(name = "firebase_id", nullable = false)
-    private Customer customer;
+    private String customerId;
 
-    public Dog(String name, String dob, String breed, Integer size, Integer exerciseRequired, Boolean hypoallergenic, Boolean canBeLeft, Boolean okWithKids, Boolean okWithCats, Boolean okWithDogs, Customer customer) {
+    public Dog(String name, String dob, String breed, Integer size, Integer exerciseRequired, Boolean hypoallergenic, Boolean canBeLeft, Boolean okWithKids, Boolean okWithCats, Boolean okWithDogs, String customerId) {
         this.name = name;
         this.dob = dob;
         this.breed = breed;
@@ -59,7 +59,7 @@ public class Dog {
         this.okWithKids = okWithKids;
         this.okWithCats = okWithCats;
         this.okWithDogs = okWithDogs;
-        this.customer = customer;
+        this.customerId = customerId;
     }
 
     public Dog() {}
@@ -152,11 +152,11 @@ public class Dog {
         this.okWithDogs = okWithDogs;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }
