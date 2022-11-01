@@ -71,14 +71,14 @@ public class Customer {
     @Column(name = "latitude")
     private String latitude;
 
-    @OneToMany (mappedBy = "customer" , fetch = FetchType.LAZY)
+    @OneToMany (mappedBy = "customer" , fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties({"customer"})
     private List<Dog> dogs;
 
-    @OneToMany(mappedBy = "customer1", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer1", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Match> matches1;
 
-    @OneToMany(mappedBy = "customer2", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "customer2", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private List<Match> matches2;
 
     public Customer(String firebase_id, Boolean availableMonday, Boolean availableTuesday, Boolean availableWednesday, Boolean availableThursday, Boolean availableFriday, Boolean availableSaturday, Boolean availableSunday, Boolean requireMonday, Boolean requireTuesday, Boolean requireWednesday, Boolean requireThursday, Boolean requireFriday, Boolean requireSaturday, Boolean requireSunday, Boolean hasKids, Boolean hasOtherDogs, Boolean hasCats, Integer exerciseOffered, Boolean dogLeftAlone, Boolean hasAllergies, Integer dogSizeOffer, String longitude, String latitude) {
