@@ -16,7 +16,7 @@ public class CustomerController {
     CustomerRepository customerRepository;
 
     @GetMapping(value = "/customers")
-    public ResponseEntity<List<Customer>> getAllPirates(){
+    public ResponseEntity<List<Customer>> getAllCustomers(){
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
     }
 
@@ -30,4 +30,9 @@ public class CustomerController {
         customerRepository.save(customer);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
+
+//    @PutMapping(value = "/customers/{id}")
+//    public ResponseEntity
+
+
 }

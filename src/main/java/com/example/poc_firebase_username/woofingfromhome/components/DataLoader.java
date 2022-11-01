@@ -28,22 +28,22 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader() {}
 
     public void run(ApplicationArguments args) {
-        Customer customer = new Customer("12234cdww","Jackie","Bird","jacke@gmail.com","EH68ES", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+        Customer customer = new Customer("12234cdww", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
         customerRepository.save(customer);
 
-        Customer customer2 = new Customer("changed1234","Birdie","Jack","jacke@gmail.com","EH68ES", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+        Customer customer2 = new Customer("changed1234", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
         customerRepository.save(customer2);
 
-        Customer customer3 = new Customer("newPerson3","Conrad","Russo","email@gmail.com","EH68ES", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+        Customer customer3 = new Customer("newPerson3", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
         customerRepository.save(customer3);
 
-        Customer customer4 = new Customer("newPerson4","Katie","Booth","email@gmail.com","EH68ES", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+        Customer customer4 = new Customer("newPerson4", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
         customerRepository.save(customer4);
 
-        Customer customer5 = new Customer("newPerson5","Callum","Donaldson","email@gmail.com","EH68ES", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+        Customer customer5 = new Customer("newPerson5",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
         customerRepository.save(customer5);
 
-        Customer customer6 = new Customer("newPerson6","Ben","PoshSurname","email@gmail.com","EH68ES", true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
+        Customer customer6 = new Customer("newPerson6",true,true,true,true,true,true,true,false,false,false,false,false,false,false,true,true,true,9,true,true,6);
         customerRepository.save(customer6);
 
         Dog dog = new Dog("Scratchie","7-12-2021","Cavapoo",3,3,true,true,true,true,false,customer);
