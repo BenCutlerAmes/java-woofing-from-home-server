@@ -44,7 +44,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(80, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(100, match.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,1,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(80, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(100, match.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -105,6 +105,26 @@ public class WoofingFromHomeServerTests {
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
 		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+	@Test
+	public void testHasNoRequirements() {
+		customer = new Customer("Conrad", false, true, true, true, true, true, true, false, false, false, false, false, false, false, true, true, true, 2, true, true, 2, "33.33", "33.33");
+		customer2 = new Customer("Callum", false, true, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, 2, true, true, 2, "33.33", "33.33");
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(100, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+	@Test
+	public void testMeets3DaysOf5Requirements() {
+		customer = new Customer("Conrad", false, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, 2, true, true, 2, "33.33", "33.33");
+		customer2 = new Customer("Callum", false, false, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, 2, true, true, 2, "33.33", "33.33");
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(60, match.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 
