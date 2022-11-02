@@ -118,7 +118,7 @@ public class Helpers {
 
     public static void generateMatches(Customer customer, List<Customer> customerList, MatchRepository matchRepository){
         for (Customer customera: customerList){
-            if( customer == customera){
+            if( customer.getFirebaseId() == customera.getFirebaseId()){
                 continue;
             }
         double score1 = calculateMatchScore(customer, customera);
