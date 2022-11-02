@@ -2,6 +2,7 @@ package com.example.poc_firebase_username.woofingfromhome.models;
 
 import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRepository;
 import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
+import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import javax.ws.rs.client.Client;
@@ -136,20 +137,17 @@ public class Helpers {
         }
     }
 
-    public static double calculateDistanceFromAPI(){
-        Customer customer1 = new Customer("Conrad", false, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, 2, true, true, 2, "51.411663", "-0.719350");
-        Customer customer2 = new Customer("Callum", false, false, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, 2, true, true, 2, "51.510050", "-0.597024");
-
+    public static double calculateDistanceFromAPI(Customer customer1, Customer customer2){
+        String apiKey = "5b3ce3597851110001cf6248406081c305d04aabb57e123c78214b06";
+        String customer1Coords = customer1.getLatitude()+","+customer1.getLongitude();
+        String customer2Coords = customer2.getLatitude()+","+customer2.getLongitude();
+        String requestString = "https://api.openrouteservice.org/v2/directions/driving-car?api_key="+apiKey+"&start="+customer1Coords+"&end="+customer2Coords;
         Client client = ClientBuilder.newClient();
-        Response response = client.target("https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248406081c305d04aabb57e123c78214b06&start=8.681495,49.41461&end=8.687872,49.420318")
+        Response response = client.target(requestString)
                 .request(MediaType.TEXT_PLAIN_TYPE)
                 .header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8")
                 .get();
-
-        System.out.println("status: " + response.getStatus());
-        System.out.println("headers: " + response.getHeaders());
-        System.out.println("body:" + response.readEntity(String.class));
-        return 3;
+        return new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("duration").getAsDouble();
 
     }
 }

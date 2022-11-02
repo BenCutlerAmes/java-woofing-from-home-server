@@ -49,10 +49,4 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(value = "/customers/bentest")
-    public ResponseEntity<Integer> apitest() {
-        Integer response = (int) Helpers.calculateDistanceFromAPI();
-
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
-    }
 }
