@@ -1,8 +1,13 @@
 package com.example.poc_firebase_username.woofingfromhome.models;
 
 import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRepository;
+import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
 public class Helpers {
+
 
     public static double calculateMatchScore(Customer customer1, Customer customer2) {
         double score = 80;
@@ -111,9 +116,18 @@ public class Helpers {
 
     }
 
-    public static void generateMatches(Customer customer, CustomerRepository customerRepository){
-        for (Customer customera: customerRepository.findAll()){
-
+    public static void generateMatches(Customer customer, List<Customer> customerList, MatchRepository matchRepository){
+        for (Customer customera: customerList){
+            if( customer == customera){
+                continue;
+            }
+        double score1 = calculateMatchScore(customer, customera);
+//TODO Distance api calculation
+            Match match1 = new Match(customer, customera,498765,score1);
+             matchRepository.save(match1);
+             double score2 = calculateMatchScore(customera, customer);
+             Match match2 = new Match(customera, customer,498765,score2);
+             matchRepository.save(match2);
         }
     }
 }

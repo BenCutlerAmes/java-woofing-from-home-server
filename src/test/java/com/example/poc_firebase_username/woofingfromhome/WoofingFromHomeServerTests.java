@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
@@ -128,14 +130,5 @@ public class WoofingFromHomeServerTests {
 		Match match = new Match(customer, customer2, 50, 0);
 		assertEquals(60, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
-
-
-
-
-
-
-
-
-
 
 }
