@@ -4,6 +4,11 @@ import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRe
 import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 public class Helpers {
@@ -129,5 +134,22 @@ public class Helpers {
              Match match2 = new Match(customera, customer,498765,score2);
              matchRepository.save(match2);
         }
+    }
+
+    public static double calculateDistanceFromAPI(){
+        Customer customer1 = new Customer("Conrad", false, true, true, true, true, true, true, true, true, true, true, true, false, false, true, true, true, 2, true, true, 2, "51.411663", "-0.719350");
+        Customer customer2 = new Customer("Callum", false, false, true, true, true, true, true, true, false, false, false, false, false, false, true, true, true, 2, true, true, 2, "51.510050", "-0.597024");
+
+        Client client = ClientBuilder.newClient();
+        Response response = client.target("https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf6248406081c305d04aabb57e123c78214b06&start=8.681495,49.41461&end=8.687872,49.420318")
+                .request(MediaType.TEXT_PLAIN_TYPE)
+                .header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8")
+                .get();
+
+        System.out.println("status: " + response.getStatus());
+        System.out.println("headers: " + response.getHeaders());
+        System.out.println("body:" + response.readEntity(String.class));
+        return 3;
+
     }
 }
