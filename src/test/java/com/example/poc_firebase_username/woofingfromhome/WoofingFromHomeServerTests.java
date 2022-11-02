@@ -4,12 +4,16 @@ import com.example.poc_firebase_username.woofingfromhome.models.Customer;
 
 
 import com.example.poc_firebase_username.woofingfromhome.models.Dog;
+import com.example.poc_firebase_username.woofingfromhome.models.Helpers;
 import com.example.poc_firebase_username.woofingfromhome.models.Match;
+import org.hibernate.id.uuid.Helper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -36,7 +40,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,false,false,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -44,7 +48,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(100, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(100, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -54,7 +58,7 @@ public class WoofingFromHomeServerTests {
 		customer.getDogs().add(dog);
 		customer2.getDogs().add(dog2);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 	@Test
 	public void testIsLoopingThroughDogs() {
@@ -64,7 +68,7 @@ public class WoofingFromHomeServerTests {
 		customer.getDogs().add(dog2);
 		customer2.getDogs().add(dog2);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -72,7 +76,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,1,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(100, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(100, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -80,7 +84,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,false,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -88,7 +92,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,false,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -96,7 +100,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -104,7 +108,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",1,3,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(0, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -114,7 +118,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(100, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(100, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
 
 	@Test
@@ -124,16 +128,7 @@ public class WoofingFromHomeServerTests {
 		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
-		assertEquals(60, match.calculateMatchScore(customer, customer2), 0.0);
+		assertEquals(60, Helpers.calculateMatchScore(customer, customer2), 0.0);
 	}
-
-
-
-
-
-
-
-
-
 
 }

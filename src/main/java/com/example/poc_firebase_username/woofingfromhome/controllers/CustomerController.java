@@ -1,6 +1,7 @@
 package com.example.poc_firebase_username.woofingfromhome.controllers;
 
 import com.example.poc_firebase_username.woofingfromhome.models.Customer;
+import com.example.poc_firebase_username.woofingfromhome.models.Helpers;
 import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRepository;
 import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
+    @Autowired
+    MatchRepository matchRepository;
+
     @GetMapping(value = "/customers")
     public ResponseEntity<List<Customer>> getAllCustomers() {
         return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
@@ -29,6 +33,7 @@ public class CustomerController {
     @PostMapping(value = "/customers")
     public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
         customerRepository.save(customer);
+        Helpers.generateMatches(customer,customerRepository.findAll(),matchRepository);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
     }
 
