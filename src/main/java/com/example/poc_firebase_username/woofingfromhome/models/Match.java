@@ -103,6 +103,32 @@ public class Match {
                 return 0;
             }
         }
+
+        for(Dog dog : customer1.getDogs()){
+            if(!dog.getHypoallergenic() && customer2.getHasAllergies()){
+                return 0;
+            }
+        }
+
+        for(Dog dog : customer1.getDogs()){
+            if(!dog.getCanBeLeft() && customer2.getDogLeftAlone()){
+                return 0;
+            }
+        }
+
+        for(Dog dog : customer1.getDogs()){
+            if(dog.getSize() == 3 && customer2.getDogSizeOffer() == 1){
+                return 0;
+            }
+        }
+
+        for(Dog dog : customer1.getDogs()){
+            if(dog.getExerciseRequired() == 3 && customer2.getExerciseOffered() == 1){
+                return 0;
+            }
+        }
+
+        
         return score;
 
     }

@@ -24,7 +24,7 @@ public class WoofingFromHomeServerTests {
 	@Before
 	public void setup(){
 		customer = new Customer("Conrad", true, true, true, true, true, true, true, false, false, false, false, false, false, false, true, true, true, 9, true, true, 6, "33.33", "33.33");
-		customer2 = new Customer("Callum", true, true, true, true, true, true, true, false, false, false, false, false, false, false, true, true, true, 9, true, true, 6, "33.33", "33.33");
+		customer2 = new Customer("Callum", true, true, true, true, true, true, true, false, false, false, false, false, false, false, true, true, true, 1, true, true, 1, "33.33", "33.33");
 	}
 
 	@Test
@@ -41,7 +41,7 @@ public class WoofingFromHomeServerTests {
 
 	@Test
 	public void dogOKWithAll() {
-		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,true,customer);
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,2,true,true,true,true,true,customer);
 		customer.getDogs().add(dog);
 		Match match = new Match(customer, customer2, 50, 0);
 		assertEquals(80, match.calculateMatchScore(customer, customer2), 0.0);
@@ -66,6 +66,48 @@ public class WoofingFromHomeServerTests {
 		Match match = new Match(customer, customer2, 50, 0);
 		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
 	}
+
+	@Test
+	public void customer2HasAllergiesButDogHypoallergenic() {
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",2,1,true,true,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(80, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+	@Test
+	public void customer2HasAllergiesButDogNotHypoallergenic() {
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,false,true,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+	@Test
+	public void dogCannotBeLeftAlone() {
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,false,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+	@Test
+	public void largeDog() {
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",3,3,true,true,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+	@Test
+	public void dogNeedsHighExercise() {
+		Dog dog = new Dog("Bingo","7-12-2021","Cavapoo",1,3,true,true,true,true,true,customer);
+		customer.getDogs().add(dog);
+		Match match = new Match(customer, customer2, 50, 0);
+		assertEquals(0, match.calculateMatchScore(customer, customer2), 0.0);
+	}
+
+
 
 
 
