@@ -47,6 +47,7 @@ public class Customer {
     @Column(name = "has_kids")
     private Boolean hasKids;
 
+    //TODO - might not need this field as we have a list of dogs for each customer
     @Column(name = "has_other_dogs")
     private Boolean hasOtherDogs;
 

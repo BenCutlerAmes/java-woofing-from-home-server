@@ -82,4 +82,28 @@ public class Match {
     public void setScore(double score) {
         this.score = score;
     }
+
+    public double calculateMatchScore(Customer customer1, Customer customer2){
+        double score = 80;
+        //rule out cases where any of customers dogs cannot be around cats and other customer has cat
+        //loop through customer 1 dogs and check against customer 2 has cat
+        for(Dog dog : customer1.getDogs()){
+            if(!dog.getOkWithCats() && customer2.getHasCats()){
+                return 0;
+            }
+        }
+        for(Dog dog : customer1.getDogs()){
+            if(!dog.getOkWithKids() && customer2.getHasKids()){
+                return 0;
+            }
+        }
+
+        for(Dog dog : customer1.getDogs()){
+            if(!dog.getOkWithDogs() && customer2.getDogs().size() > 0){
+                return 0;
+            }
+        }
+        return score;
+
+    }
 }
