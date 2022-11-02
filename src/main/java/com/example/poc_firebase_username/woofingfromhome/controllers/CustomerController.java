@@ -48,4 +48,5 @@ public class CustomerController {
         customerRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
 }

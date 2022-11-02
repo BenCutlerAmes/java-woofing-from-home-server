@@ -2,8 +2,14 @@ package com.example.poc_firebase_username.woofingfromhome.models;
 
 import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRepository;
 import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
+import com.google.gson.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 public class Helpers {
@@ -129,5 +135,19 @@ public class Helpers {
              Match match2 = new Match(customera, customer,498765,score2);
              matchRepository.save(match2);
         }
+    }
+
+    public static double calculateDistanceFromAPI(Customer customer1, Customer customer2){
+        String apiKey = "5b3ce3597851110001cf6248406081c305d04aabb57e123c78214b06";
+        String customer1Coords = customer1.getLatitude()+","+customer1.getLongitude();
+        String customer2Coords = customer2.getLatitude()+","+customer2.getLongitude();
+        String requestString = "https://api.openrouteservice.org/v2/directions/driving-car?api_key="+apiKey+"&start="+customer1Coords+"&end="+customer2Coords;
+        Client client = ClientBuilder.newClient();
+        Response response = client.target(requestString)
+                .request(MediaType.TEXT_PLAIN_TYPE)
+                .header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8")
+                .get();
+        return new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("duration").getAsDouble();
+
     }
 }
