@@ -12,6 +12,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.MediaType;
 
 import java.util.List;
+import java.util.Objects;
+
 public class Helpers {
 
 
@@ -149,5 +151,17 @@ public class Helpers {
                 .get();
         return new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("duration").getAsDouble();
 
+    }
+
+    public static void updateMatchTable(Customer customer, List<Match> matches, MatchRepository matchRepository){
+        for (Match match : matches){
+            if (Objects.equals(customer.getFirebaseId(), match.getCustomer1().getFirebaseId())||Objects.equals(customer.getFirebaseId(),match.getCustomer2().getFirebaseId())){
+                double score = calculateMatchScore(match.getCustomer1(),match.getCustomer2());
+                match.setScore(score);
+//                TODO Uncomment api call
+//                double distance = calculateDistanceFromAPI(match.getCustomer1(),match.getCustomer2());
+//                match.setDistance(distance);
+            }
+        }
     }
 }
