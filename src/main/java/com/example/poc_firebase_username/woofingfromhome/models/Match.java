@@ -27,12 +27,12 @@ public class Match {
     private Customer customer2;
 
     @Column(name = "distance")
-    private Integer distance;
+    private double distance;
 
     @Column(name = "score")
     private double score;
 
-    public Match(Customer customer1, Customer customer2, Integer distance, double score) {
+    public Match(Customer customer1, Customer customer2, double distance, double score) {
         this.customer1 = customer1;
         this.customer2 = customer2;
         this.distance = distance;
@@ -67,11 +67,11 @@ public class Match {
         this.customer2 = customer2;
     }
 
-    public Integer getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(Integer distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 

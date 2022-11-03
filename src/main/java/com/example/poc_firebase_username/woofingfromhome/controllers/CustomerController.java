@@ -39,7 +39,9 @@ public class CustomerController {
 
     @PutMapping(value = "/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer){
+//TODO Helper update customer goes here
         customerRepository.save(customer);
+        Helpers.updateMatchTable(customer,matchRepository.findAll(),matchRepository);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 
