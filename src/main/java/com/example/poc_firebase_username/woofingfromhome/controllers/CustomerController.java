@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customers")
-    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) throws InterruptedException {
         customerRepository.save(customer);
         Helpers.generateMatches(customer,customerRepository.findAll(),matchRepository);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
@@ -42,7 +42,6 @@ public class CustomerController {
 
     @PutMapping(value = "/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer){
-//TODO Helper update customer goes here
         customerRepository.save(customer);
         Helpers.updateMatchTable(customer,matchRepository.findAll(),matchRepository);
         return new ResponseEntity<>(customer, HttpStatus.OK);
@@ -54,10 +53,6 @@ public class CustomerController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping(value = "/customers/distancetest")
-    public ResponseEntity apidistancetest(){
-        JsonElement output = Helpers.calculateDistanceFromAPI();
-        return new ResponseEntity<>(output, HttpStatus.OK);
-    }
+
 
 }

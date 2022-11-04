@@ -115,26 +115,26 @@ public class Helpers {
                 continue;
             }
             double score1 = calculateMatchScore(customer, customera);
-//            double distance1=calculateDistanceFromAPI();
-//            TODO undo 5's
-            Match match1 = new Match(customer, customera, 5, score1);
+            System.out.println("score: "+score1);
+            double distance1 = calculateDistanceFromAPI(customer,customera);
+            System.out.println("distance: "+distance1);
+            Match match1 = new Match(customer, customera, distance1, score1);
             matchRepository.save(match1);
             double score2 = calculateMatchScore(customera, customer);
-            Match match2 = new Match(customera, customer, 5, score2);
+            Match match2 = new Match(customera, customer, distance1, score2);
             matchRepository.save(match2);
         }
     }
 
-    public static JsonElement calculateDistanceFromAPI() {
+    public static double calculateDistanceFromAPI(Customer customer1, Customer customer2) {
         String apiKey = "5b3ce3597851110001cf6248406081c305d04aabb57e123c78214b06";
-        Customer customer1 = new Customer("Ben", true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, false, 2, false, false, 3, "-3.1351147", "55.901599");
-        Customer customer2 = new Customer("Conrad", true, false, false, false, true, false, false, false, true, true, true, false, false, false, false, true, false, 3, false, true, 3, "-3.1352243", "55.902431");
-        String customer1Coords = customer1.getLatitude() + "," + customer1.getLongitude();
-        String customer2Coords = customer2.getLatitude() + "," + customer2.getLongitude();
+        String customer1Coords = customer1.getLongitude() + "," + customer1.getLatitude();
+        String customer2Coords = customer2.getLongitude() + "," + customer2.getLatitude();
         String requestString = "https://api.openrouteservice.org/v2/directions/driving-car?api_key=" + apiKey + "&start=" + customer1Coords + "&end=" + customer2Coords;
         Client client = ClientBuilder.newClient();
         Response response = client.target(requestString).request(MediaType.TEXT_PLAIN_TYPE).header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8").get();
-        return new JsonParser().parse(response.readEntity(String.class));
+        System.out.println(response);
+        return new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("distance").getAsDouble();
     }
 
     public static void updateMatchTable(Customer customer, List<Match> matches, MatchRepository matchRepository) {
@@ -142,9 +142,8 @@ public class Helpers {
             if (Objects.equals(customer.getFirebaseId(), match.getCustomer1().getFirebaseId()) || Objects.equals(customer.getFirebaseId(), match.getCustomer2().getFirebaseId())) {
                 double score = calculateMatchScore(match.getCustomer1(), match.getCustomer2());
                 match.setScore(score);
-//                TODO Uncomment api call
-//                double distance = calculateDistanceFromAPI(match.getCustomer1(),match.getCustomer2());
-//                match.setDistance(distance);
+                double distance = calculateDistanceFromAPI(match.getCustomer1(),match.getCustomer2());
+                match.setDistance(distance);
             }
         }
     }
