@@ -53,42 +53,42 @@ public class DataLoader implements ApplicationRunner {
         Dog flo = new Dog("Flo", "4-07-2020", "Cavapoo", 1, 1, true, false, true, false, true, conrad);
         dogRepository.save(flo);
 
-        Match match1 = new Match(ben, callum,1, 2);
+        Match match1 = new Match(ben, callum,Helpers.calculateDistanceFromAPI(ben,callum), Helpers.calculateMatchScore(ben,callum));
         matchRepository.save(match1);
 
 
-//        Match match2 = new Match(ben, conrad, Helpers.calculateDistanceFromAPI(ben, conrad), Helpers.calculateMatchScore(ben, conrad));
-//        matchRepository.save(match2);
-//
-//        Match match3 = new Match(ben, katie, Helpers.calculateDistanceFromAPI(ben, katie), Helpers.calculateMatchScore(ben, katie));
-//        matchRepository.save(match3);
-//
-//        Match match4 = new Match(callum, ben, Helpers.calculateDistanceFromAPI(callum, ben), Helpers.calculateMatchScore(callum, ben));
-//        matchRepository.save(match4);
-//
-//        Match match5 = new Match(callum, conrad, Helpers.calculateDistanceFromAPI(callum, conrad), Helpers.calculateMatchScore(callum, conrad));
-//        matchRepository.save(match5);
-//
-//        Match match6 = new Match(callum, katie, Helpers.calculateDistanceFromAPI(callum, katie), Helpers.calculateMatchScore(callum, katie));
-//        matchRepository.save(match6);
-//
-//        Match match7 = new Match(conrad, ben, Helpers.calculateDistanceFromAPI(conrad, ben), Helpers.calculateMatchScore(conrad, ben));
-//        matchRepository.save(match7);
-//
-//        Match match8 = new Match(conrad, callum, Helpers.calculateDistanceFromAPI(conrad, callum), Helpers.calculateMatchScore(conrad, callum));
-//        matchRepository.save(match8);
-//
-//        Match match9 = new Match(conrad, katie, Helpers.calculateDistanceFromAPI(conrad, katie), Helpers.calculateMatchScore(conrad, katie));
-//        matchRepository.save(match9);
-//
-//        Match match10 = new Match(katie, ben, Helpers.calculateDistanceFromAPI(katie, ben), Helpers.calculateMatchScore(katie, ben));
-//        matchRepository.save(match10);
-//
-//        Match match11 = new Match(katie, callum, Helpers.calculateDistanceFromAPI(katie, callum), Helpers.calculateMatchScore(katie, callum));
-//        matchRepository.save(match11);
-//
-//        Match match12 = new Match(katie, conrad, Helpers.calculateDistanceFromAPI(katie, conrad), Helpers.calculateMatchScore(katie, conrad));
-//        matchRepository.save(match12);
+        Match match2 = new Match(ben, conrad, Helpers.calculateDistanceFromAPI(ben, conrad), Helpers.calculateMatchScore(ben, conrad));
+        matchRepository.save(match2);
+
+        Match match3 = new Match(ben, katie, Helpers.calculateDistanceFromAPI(ben, katie), Helpers.calculateMatchScore(ben, katie));
+        matchRepository.save(match3);
+
+        Match match4 = new Match(callum, ben, Helpers.calculateDistanceFromAPI(callum, ben), Helpers.calculateMatchScore(callum, ben));
+        matchRepository.save(match4);
+
+        Match match5 = new Match(callum, conrad, Helpers.calculateDistanceFromAPI(callum, conrad), Helpers.calculateMatchScore(callum, conrad));
+        matchRepository.save(match5);
+
+        Match match6 = new Match(callum, katie, Helpers.calculateDistanceFromAPI(callum, katie), Helpers.calculateMatchScore(callum, katie));
+        matchRepository.save(match6);
+
+        Match match7 = new Match(conrad, ben, Helpers.calculateDistanceFromAPI(conrad, ben), Helpers.calculateMatchScore(conrad, ben));
+        matchRepository.save(match7);
+
+        Match match8 = new Match(conrad, callum, Helpers.calculateDistanceFromAPI(conrad, callum), Helpers.calculateMatchScore(conrad, callum));
+        matchRepository.save(match8);
+
+        Match match9 = new Match(conrad, katie, Helpers.calculateDistanceFromAPI(conrad, katie), Helpers.calculateMatchScore(conrad, katie));
+        matchRepository.save(match9);
+
+        Match match10 = new Match(katie, ben, Helpers.calculateDistanceFromAPI(katie, ben), Helpers.calculateMatchScore(katie, ben));
+        matchRepository.save(match10);
+
+        Match match11 = new Match(katie, callum, Helpers.calculateDistanceFromAPI(katie, callum), Helpers.calculateMatchScore(katie, callum));
+        matchRepository.save(match11);
+
+        Match match12 = new Match(katie, conrad, Helpers.calculateDistanceFromAPI(katie, conrad), Helpers.calculateMatchScore(katie, conrad));
+        matchRepository.save(match12);
 
 
     }
