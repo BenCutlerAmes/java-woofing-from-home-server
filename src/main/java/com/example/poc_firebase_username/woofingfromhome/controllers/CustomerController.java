@@ -4,11 +4,14 @@ import com.example.poc_firebase_username.woofingfromhome.models.Customer;
 import com.example.poc_firebase_username.woofingfromhome.models.Helpers;
 import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRepository;
 import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @RestController
@@ -31,7 +34,7 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customers")
-    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) {
+    public ResponseEntity<Customer> postCustomer(@RequestBody Customer customer) throws InterruptedException {
         customerRepository.save(customer);
         Helpers.generateMatches(customer,customerRepository.findAll(),matchRepository);
         return new ResponseEntity<>(customer, HttpStatus.CREATED);
@@ -39,7 +42,6 @@ public class CustomerController {
 
     @PutMapping(value = "/customers/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer){
-//TODO Helper update customer goes here
         customerRepository.save(customer);
         Helpers.updateMatchTable(customer,matchRepository.findAll(),matchRepository);
         return new ResponseEntity<>(customer, HttpStatus.OK);
@@ -50,5 +52,7 @@ public class CustomerController {
         customerRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 
 }
