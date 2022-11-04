@@ -136,7 +136,7 @@ public class Helpers {
         double output = 0;
         try {
             output = new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("distance").getAsDouble();
-        }catch(NullPointerException){
+        }catch(NullPointerException ex){
             output = 0;
         }
         return output;
