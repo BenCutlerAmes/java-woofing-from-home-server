@@ -89,5 +89,7 @@ public class DataLoader implements ApplicationRunner {
 
         Match match12 = new Match(katie, conrad, Helpers.calculateDistanceFromAPI(katie, conrad), Helpers.calculateMatchScore(katie, conrad));
         matchRepository.save(match12);
+
+//        ignore
     }
 }
