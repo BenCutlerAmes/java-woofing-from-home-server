@@ -133,8 +133,13 @@ public class Helpers {
         String requestString = "https://api.openrouteservice.org/v2/directions/driving-car?api_key=" + apiKey + "&start=" + customer1Coords + "&end=" + customer2Coords;
         Client client = ClientBuilder.newClient();
         Response response = client.target(requestString).request(MediaType.TEXT_PLAIN_TYPE).header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8").get();
-        System.out.println(response);
-        return new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("distance").getAsDouble();
+        double output = 0;
+        try {
+            output = new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("distance").getAsDouble();
+        }catch(NullPointerException){
+            output = 0;
+        }
+        return output;
     }
 
     public static void updateMatchTable(Customer customer, List<Match> matches, MatchRepository matchRepository) {
