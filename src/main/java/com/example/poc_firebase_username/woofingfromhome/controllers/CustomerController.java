@@ -4,11 +4,14 @@ import com.example.poc_firebase_username.woofingfromhome.models.Customer;
 import com.example.poc_firebase_username.woofingfromhome.models.Helpers;
 import com.example.poc_firebase_username.woofingfromhome.repositories.CustomerRepository;
 import com.example.poc_firebase_username.woofingfromhome.repositories.MatchRepository;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @RestController
@@ -49,6 +52,12 @@ public class CustomerController {
     public ResponseEntity deleteCustomer(@PathVariable String id) {
         customerRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/customers/distancetest")
+    public ResponseEntity apidistancetest(){
+        JsonElement output = Helpers.calculateDistanceFromAPI();
+        return new ResponseEntity<>(output, HttpStatus.OK);
     }
 
 }

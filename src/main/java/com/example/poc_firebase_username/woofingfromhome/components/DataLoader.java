@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.math.MathContext;
 
 @Profile("!test") //Run every time EXCEPT Tests
-@Component
+//@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -32,30 +32,31 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-//        Customer ben = new Customer("Ben", true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, false, 2, false, false, 3, "-3.1351147", "55.901599");
-//        customerRepository.save(ben);
-//
-//        Customer conrad = new Customer("Conrad", true, false, false, false, true, false, false, false, true, true, true, false, false, false, false, true, false, 3, false, true, 3, "-3.1352243", "55.902431");
-//        customerRepository.save(conrad);
-//
-//        Customer callum = new Customer("Callum", false, true, true, false, true, false, false, true, false, false, true, false, false, false, false, true, false, 3, false, false, 3, "-3.129965", "55.100000");
-//        customerRepository.save(callum);
-//
-//        Customer katie = new Customer("Katie", true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, 3, false, false, 1, "-3.131012", "55.956403");
-//        customerRepository.save(katie);
-//
-//        Dog saffy = new Dog("Saffy", "9-12-2016", "Old English Sheepdog", 3, 2, true, false, true, true, true, ben);
-//        dogRepository.save(saffy);
-//
-//        Dog teddy = new Dog("Teddy", "14-3-2018", "Golden Retriever", 2, 3, false, true, true, true, true, callum);
-//        dogRepository.save(teddy);
-//
-//        Dog flo = new Dog("Flo", "4-07-2020", "Cavapoo", 1, 1, true, false, true, false, true, conrad);
-//        dogRepository.save(flo);
+        Customer ben = new Customer("Ben", true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, false, 2, false, false, 3, "-3.1351147", "55.901599");
+        customerRepository.save(ben);
 
-//        Match match1 = new Match(ben, callum, Helpers.calculateDistanceFromAPI(ben, callum), Helpers.calculateMatchScore(ben, callum));
-//        matchRepository.save(match1);
-//
+        Customer conrad = new Customer("Conrad", true, false, false, false, true, false, false, false, true, true, true, false, false, false, false, true, false, 3, false, true, 3, "-3.1352243", "55.902431");
+        customerRepository.save(conrad);
+
+        Customer callum = new Customer("Callum", false, true, true, false, true, false, false, true, false, false, true, false, false, false, false, true, false, 3, false, false, 3, "-3.129965", "55.100000");
+        customerRepository.save(callum);
+
+        Customer katie = new Customer("Katie", true, true, true, true, true, true, true, false, false, false, false, false, false, false, false, false, false, 3, false, false, 1, "-3.131012", "55.956403");
+        customerRepository.save(katie);
+
+        Dog saffy = new Dog("Saffy", "9-12-2016", "Old English Sheepdog", 3, 2, true, false, true, true, true, ben);
+        dogRepository.save(saffy);
+
+        Dog teddy = new Dog("Teddy", "14-3-2018", "Golden Retriever", 2, 3, false, true, true, true, true, callum);
+        dogRepository.save(teddy);
+
+        Dog flo = new Dog("Flo", "4-07-2020", "Cavapoo", 1, 1, true, false, true, false, true, conrad);
+        dogRepository.save(flo);
+
+        Match match1 = new Match(ben, callum,1, 2);
+        matchRepository.save(match1);
+
+
 //        Match match2 = new Match(ben, conrad, Helpers.calculateDistanceFromAPI(ben, conrad), Helpers.calculateMatchScore(ben, conrad));
 //        matchRepository.save(match2);
 //

@@ -115,24 +115,26 @@ public class Helpers {
                 continue;
             }
             double score1 = calculateMatchScore(customer, customera);
-//TODO Distance api calculation
-            Match match1 = new Match(customer, customera, 498765, score1);
+//            double distance1=calculateDistanceFromAPI();
+//            TODO undo 5's
+            Match match1 = new Match(customer, customera, 5, score1);
             matchRepository.save(match1);
             double score2 = calculateMatchScore(customera, customer);
-            Match match2 = new Match(customera, customer, 498765, score2);
+            Match match2 = new Match(customera, customer, 5, score2);
             matchRepository.save(match2);
         }
     }
 
-    public static double calculateDistanceFromAPI(Customer customer1, Customer customer2) {
+    public static JsonElement calculateDistanceFromAPI() {
         String apiKey = "5b3ce3597851110001cf6248406081c305d04aabb57e123c78214b06";
+        Customer customer1 = new Customer("Ben", true, true, true, false, false, false, false, false, false, false, false, true, false, false, false, true, false, 2, false, false, 3, "-3.1351147", "55.901599");
+        Customer customer2 = new Customer("Conrad", true, false, false, false, true, false, false, false, true, true, true, false, false, false, false, true, false, 3, false, true, 3, "-3.1352243", "55.902431");
         String customer1Coords = customer1.getLatitude() + "," + customer1.getLongitude();
         String customer2Coords = customer2.getLatitude() + "," + customer2.getLongitude();
         String requestString = "https://api.openrouteservice.org/v2/directions/driving-car?api_key=" + apiKey + "&start=" + customer1Coords + "&end=" + customer2Coords;
         Client client = ClientBuilder.newClient();
         Response response = client.target(requestString).request(MediaType.TEXT_PLAIN_TYPE).header("Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8").get();
-        return new JsonParser().parse(response.readEntity(String.class)).getAsJsonObject().get("features").getAsJsonArray().get(0).getAsJsonObject().get("properties").getAsJsonObject().get("summary").getAsJsonObject().get("duration").getAsDouble();
-
+        return new JsonParser().parse(response.readEntity(String.class));
     }
 
     public static void updateMatchTable(Customer customer, List<Match> matches, MatchRepository matchRepository) {
