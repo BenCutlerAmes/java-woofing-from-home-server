@@ -18,33 +18,17 @@ public class MatchController {
     MatchRepository matchRepository;
 
     @GetMapping(value = "/matches")
-    public ResponseEntity<List<Match>> getAllMatches(@RequestParam(required = false, name="firebaseId") String firebaseId) {
-        if(firebaseId != null){
-            return new ResponseEntity<>(matchRepository.findByCustomer1_FirebaseIdAndScoreGreaterThanOrCustomer2_FirebaseId(firebaseId,0,firebaseId), HttpStatus.OK);
+    public ResponseEntity<List<Match>> getAllMatches(@RequestParam(required = false, name = "firebaseId") String firebaseId) {
+        if (firebaseId != null) {
+            return new ResponseEntity<>(matchRepository.findByCustomer1_FirebaseIdAndScoreGreaterThanOrCustomer2_FirebaseId(firebaseId, 0, firebaseId), HttpStatus.OK);
         }
         return new ResponseEntity<>(matchRepository.findAll(), HttpStatus.OK);
     }
 
-//    @GetMapping(value = "/dogs/{id}")
-//    public ResponseEntity getMatches(@PathVariable Long id) {
-//        return new ResponseEntity<>(matchRepository.findById(id), HttpStatus.OK);
-//    }
-//
-//    @PostMapping(value = "/dogs")
-//    public ResponseEntity<Match> postMatch(@RequestBody Match match) {
-//        matchRepository.save(match);
-//        return new ResponseEntity<>(match, HttpStatus.CREATED);
-//    }
-//
-//    @PutMapping(value = "/dogs/{id}")
-//    public ResponseEntity<Match> updateMatch(@PathVariable Long id, @RequestBody Match match){
-//        matchRepository.save(match);
-//        return new ResponseEntity<>(match, HttpStatus.OK);
-//    }
-//
-//    @DeleteMapping(value = "/dogs/{id}")
-//    public ResponseEntity deleteMatch(@PathVariable Long id) {
-//        matchRepository.deleteById(id);
-//        return new ResponseEntity<>(HttpStatus.OK);
-//    }
+    @GetMapping(value = "/matches/{id}")
+    public ResponseEntity getCustomers(@PathVariable Long id) {
+        return new ResponseEntity<>(matchRepository.findById(id), HttpStatus.OK);
+    }
+
 }
+
