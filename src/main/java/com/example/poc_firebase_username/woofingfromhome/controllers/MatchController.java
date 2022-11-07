@@ -20,7 +20,7 @@ public class MatchController {
     @GetMapping(value = "/matches")
     public ResponseEntity<List<Match>> getAllMatches(@RequestParam(required = false, name="firebaseId") String firebaseId) {
         if(firebaseId != null){
-            return new ResponseEntity<>(matchRepository.findByCustomer1FirebaseIdOrCustomer2FirebaseId(firebaseId,firebaseId), HttpStatus.OK);
+            return new ResponseEntity<>(matchRepository.findByCustomer1_FirebaseIdAndScoreGreaterThanOrCustomer2_FirebaseId(firebaseId,0,firebaseId), HttpStatus.OK);
         }
         return new ResponseEntity<>(matchRepository.findAll(), HttpStatus.OK);
     }
