@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.math.MathContext;
 
 @Profile("!test") //Run every time EXCEPT Tests
-@Component
+//@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
