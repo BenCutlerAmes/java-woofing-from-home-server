@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface MatchRepository extends JpaRepository<Match, Long> {
 
-    List<Match> findByCustomer1_FirebaseIdAndScoreGreaterThanOrCustomer2_FirebaseId(String firebaseId, double score, String firebaseId1);
+    List<Match> findByCustomer1_FirebaseIdAndScoreGreaterThanOrCustomer2_FirebaseIdOrderByDistance(String firebaseId, double score, String firebaseId1);
 
 }
